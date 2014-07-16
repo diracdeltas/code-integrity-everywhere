@@ -12,18 +12,18 @@ More info (in progress): https://securedrop.hackpad.com/Code-Integrity-Everywher
 Firefox add-ons can use Mozilla's internal nsIDataSignatureVerifier interface to verify signed strings: https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIDataSignatureVerifier. However, the process for generating these signatures in the correct format is poorly documented. Here is one way to do it with nss-tools:
 
 1. Make an nss keyring directory
-```
-mkdir nssdb
-```
+    ```
+    mkdir nssdb
+    ```
 2. Initialize keyring
-```
-certutil -N -d nssdb/
-```
+    ```
+    certutil -N -d nssdb/
+    ```
 3. Generate a 2048-bit self-signed object signing cert, nicknamed "application-key". We only need the public key part of the cert, but pk1sign expects a cert as input.
-```
-certutil -S -n application-key -g 2048 -t "p,p,u" -s "CN=nobody" -x
-```
+    ```
+    certutil -S -n application-key -g 2048 -t "p,p,u" -s "CN=nobody" -x
+    ```
 4. Sign some data
-```
-echo -n '9234260c8285fcd940a74a58078985d09b74f4bf97b77ae36f8f6c6fbd774282' | pk1sign -k application-key -d nssdb
-```
+    ```
+    echo -n '9234260c8285fcd940a74a58078985d09b74f4bf97b77ae36f8f6c6fbd774282' | pk1sign -k application-key -d nssdb
+    ```
