@@ -1,0 +1,10 @@
+{
+  "manifest version": 1,
+  "app_name": "Globaleaks",
+  "app_version": "0.1",
+  "signed_resources": [
+    "uri": "/relative/path.xml",
+    "hashes": {
+      "sha256": "11ee41a6ed77619c0a36dec92e0803487d55a7cf29de26173398d96a8fede330"
+    }]
+}
