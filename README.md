@@ -17,11 +17,11 @@ mkdir nssdb
     ```
 2. Initialize keyring:
     ```
-certutil -N -d nssdb/
+certutil -N -d nssdb
     ```
 3. Generate a 2048-bit self-signed object signing cert, nicknamed "application-key". We only need the public key part of the cert, but pk1sign expects a cert as input.
     ```
-certutil -S -n application-key -g 2048 -t "p,p,u" -s "CN=nobody" -x
+certutil -S -n application-key -g 2048 -t "p,p,u" -s "CN=nobody" -x -d nssdb
     ```
 4. Sign some data:
     ```
